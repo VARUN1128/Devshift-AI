@@ -1,105 +1,6 @@
-# 🚀 Comprehensive DevOps & Cloud Team Bot for Microsoft Teams
+# Comprehensive DevOps & Cloud Team Bot for Microsoft Teams
 
-A powerful Microsoft Teams chatbot built with Node.js and Microsoft Bot Framework SDK v4 that provides comprehensive DevOps team management, including shift scheduling, incident management, Jira integration, AWS integration, and Microsoft Teams collaboration tools.
-
-## ✨ **What's New - Real-Time Features**
-
-### **1. AWS DynamoDB Integration** 🆕
-- **Persistent Storage**: All alerts are now stored in DynamoDB with full CRUD operations
-- **Real-Time Updates**: Alert status changes are immediately persisted
-- **Scalable Architecture**: Built for production workloads
-
-### **2. AWS Lambda & EventBridge** 🆕
-- **Automated Monitoring**: Lambda functions scan for unacknowledged alerts
-- **Proactive Reminders**: Automated escalation and reminder system
-- **Scheduled Operations**: EventBridge triggers for periodic monitoring
-
-### **3. Real Jira API Integration** 🆕
-- **Live Data**: Fetch real-time ticket information from Jira
-- **SLA Monitoring**: Track ticket deadlines and SLA breaches
-- **Proactive Escalations**: Automatic alerts for overdue tickets
-
-### **4. Enhanced Alert Management** 🆕
-- **Quick Reply Options**: Interactive buttons for acknowledging/snoozing alerts
-- **Escalation Workflow**: Multi-level escalation with configurable timeouts
-- **Status Tracking**: Complete audit trail of alert lifecycle
-
-## 🚀 **Quick Start - Test Real-Time Features**
-
-### **Step 1: Environment Setup**
-1. **Create `.env` file** (copy from `env.example`):
-   ```bash
-   cp env.example .env
-   ```
-
-2. **Configure required variables**:
-   ```env
-   # Bot Framework (Required)
-   MICROSOFT_APP_ID=your_bot_app_id_here
-   MICROSOFT_APP_PASSWORD=your_bot_app_password_here
-   
-   # AWS (Required for real-time features)
-   AWS_ACCESS_KEY_ID=your_aws_access_key_id
-   AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
-   AWS_REGION=us-east-1
-   
-   # Jira (Required for Jira integration)
-   JIRA_BASE_URL=https://your-domain.atlassian.net
-   JIRA_USERNAME=your_jira_email
-   JIRA_API_TOKEN=your_jira_api_token
-   
-   # Teams Webhook (Required for proactive messaging)
-   TEAMS_WEBHOOK_URL=https://your-webhook-url.com
-   ```
-
-### **Step 2: Install Dependencies**
-```bash
-npm install
-```
-
-### **Step 3: Deploy AWS Infrastructure (Optional but Recommended)**
-```bash
-# Install AWS CLI
-winget install -e --id Amazon.AWSCLI
-
-# Configure AWS credentials
-aws configure
-
-# Deploy infrastructure
-aws cloudformation deploy \
-  --template-file cloudformation-template.yaml \
-  --stack-name devops-bot-stack \
-  --capabilities CAPABILITY_NAMED_IAM
-```
-
-### **Step 4: Start the Bot**
-```bash
-npm run dev
-```
-
-### **Step 5: Test Real-Time Features**
-Open Bot Framework Emulator and connect to `http://localhost:3978/api/messages`
-
-#### **🔴 Test Alert Management (Real-Time)**
-```
-/alert database Connection timeout
-/alert monitoring High CPU usage detected
-/alert status
-```
-
-#### **🔴 Test Jira Integration (Real-Time)**
-```
-/jira dashboard
-/jira tickets open
-/jira status PROJ-123
-```
-
-#### **🔴 Test Shift Management**
-```
-/shift today
-/my schedule
-/team schedule
-```
+A powerful Microsoft Teams chatbot built with Node.js and Microsoft Bot Framework SDK v4 that provides comprehensive DevOps team management, including shift scheduling, incident management, Jira integration, and Microsoft Teams collaboration tools.
 
 ## Features
 
@@ -146,12 +47,6 @@ Open Bot Framework Emulator and connect to `http://localhost:3978/api/messages`
 - **User management** with availability and schedule tracking
 - **Team coordination** tools for effective shift coverage
 - **Communication channels** for team updates and notifications
-
-### 🆕 **Real-Time AWS Integration**
-- **DynamoDB Storage**: Persistent alert and ticket storage
-- **Lambda Functions**: Automated alert monitoring and escalation
-- **EventBridge**: Scheduled operations and triggers
-- **CloudWatch**: Comprehensive logging and monitoring
 
 ## Commands
 
@@ -211,121 +106,6 @@ Open Bot Framework Emulator and connect to `http://localhost:3978/api/messages`
 |---------|-------------|---------|
 | `help` or `/help` | Shows comprehensive help information | `help` |
 
-## 🧪 **Complete Testing Guide**
-
-### **Testing Real-Time Features**
-
-#### **1. Alert Management Testing**
-```
-/alert database Connection timeout
-/alert monitoring High CPU usage detected
-/alert status
-```
-
-**Expected Results:**
-- Alert stored in DynamoDB (if AWS configured)
-- Quick reply buttons appear
-- Alert status tracked in real-time
-
-#### **2. Jira Integration Testing**
-```
-/jira dashboard
-/jira tickets open
-/jira status PROJ-123
-```
-
-**Expected Results:**
-- Real-time data from Jira API
-- SLA breach detection
-- Proactive escalation alerts
-
-#### **3. Shift Management Testing**
-```
-/shift today
-/my schedule
-/team schedule
-/next shift
-```
-
-**Expected Results:**
-- Current shift information
-- Upcoming schedule details
-- Team coordination data
-
-#### **4. User & Greeting Testing**
-```
-/user
-/morning
-/afternoon
-/night
-```
-
-**Expected Results:**
-- User identification
-- Shift-specific greetings
-- Current on-call information
-
-#### **5. Swap & Leave Testing**
-```
-/swap blw Alice Bob 12/25/2024
-/swap status
-/leave vacation
-/leave sick 12/20/2024 12/22/2024
-/leave status
-/team leaves
-```
-
-**Expected Results:**
-- Swap request workflow
-- Leave request processing
-- Status tracking
-
-#### **6. Reminder & Incident Testing**
-```
-/remind me 15m Check alerts
-/escalate INC-001
-/incident status INC-001
-```
-
-**Expected Results:**
-- Reminder creation
-- Incident escalation
-- Status updates
-
-### **Testing with Bot Framework Emulator**
-
-1. **Download Bot Framework Emulator**
-   - [Download Link](https://github.com/Microsoft/BotFramework-Emulator/releases)
-   - Choose the latest version for your OS
-
-2. **Connect to Bot**
-   - Open Bot Framework Emulator
-   - Enter endpoint: `http://localhost:3978/api/messages`
-   - Click "Connect"
-
-3. **Test Commands**
-   - Type commands in the chat interface
-   - Verify responses and interactive elements
-   - Test error handling with invalid commands
-
-### **Testing with Microsoft Teams**
-
-1. **Install ngrok**
-   ```bash
-   npm install -g ngrok
-   ```
-
-2. **Create tunnel**
-   ```bash
-   ngrok http 3978
-   ```
-
-3. **Update your Bot Framework configuration** with the ngrok HTTPS URL:
-   - Go to Azure Portal → Your Bot → Configuration
-   - Update "Messaging endpoint" with: `https://your-ngrok-url.ngrok.io/api/messages`
-
-4. **Create a Teams app manifest** and upload to Teams for testing
-
 ## Shift Schedule
 
 The bot uses a comprehensive 3-shift system for demonstration:
@@ -352,8 +132,6 @@ Each shift has dedicated engineers with rotating schedules for comprehensive cov
 - Microsoft Azure account (for Bot Framework registration)
 - Microsoft Teams (for testing)
 - ngrok (for local development)
-- AWS account (for real-time features)
-- Jira account (for Jira integration)
 
 ## Installation
 
@@ -373,24 +151,12 @@ Each shift has dedicated engineers with rotating schedules for comprehensive cov
    cp env.example .env
    ```
    
-   Edit `.env` file with your credentials:
+   Edit `.env` file with your Bot Framework credentials:
    ```env
-   # Bot Framework
    MICROSOFT_APP_ID=your_app_id_here
    MICROSOFT_APP_PASSWORD=your_app_password_here
-   
-   # AWS (for real-time features)
-   AWS_ACCESS_KEY_ID=your_aws_access_key_id
-   AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
-   AWS_REGION=us-east-1
-   
-   # Jira
-   JIRA_BASE_URL=https://your-domain.atlassian.net
-   JIRA_USERNAME=your_jira_email
-   JIRA_API_TOKEN=your_jira_api_token
-   
-   # Teams Webhook
-   TEAMS_WEBHOOK_URL=https://your-webhook-url.com
+   PORT=3978
+   TEAMS_APP_ID=your_teams_app_id_here
    ```
 
 ## Bot Framework Registration
@@ -449,23 +215,14 @@ Each shift has dedicated engineers with rotating schedules for comprehensive cov
 
 ```
 teams-devops-bot/
-├── index.js                    # Main server file with Express and Bot Framework adapter
-├── bot.js                      # Main bot logic and comprehensive command handlers
-├── aws-services.js             # AWS DynamoDB, Lambda, and EventBridge operations
-├── jira-api.js                 # Jira API integration and operations
-├── alert-config.js             # Alert management configuration
-├── package.json                # Node.js dependencies and scripts
-├── .env                        # Environment variables (create this)
-├── README.md                   # This comprehensive documentation
-├── quick-start.md              # Quick setup guide
-├── test-bot.js                 # Testing script for bot functionality
-├── lambda/
-│   └── alert-monitor.js        # AWS Lambda function for alert monitoring
-├── cloudformation-template.yaml # AWS infrastructure deployment
-├── dynamodb-schema.json        # DynamoDB table schema definition
-├── DEPLOYMENT_GUIDE.md         # AWS deployment instructions
-├── REALTIME_IMPLEMENTATION_SUMMARY.md # Real-time features overview
-└── ALERT_FEATURES_README.md    # Alert management documentation
+├── index.js              # Main server file with Express and Bot Framework adapter
+├── bot.js                # Main bot logic and comprehensive command handlers
+├── package.json          # Node.js dependencies and scripts
+├── .env                  # Environment variables template
+├── README.md             # This comprehensive documentation
+├── quick-start.md        # Quick setup guide
+├── test-bot.js           # Testing script for bot functionality
+└── .env                  # Your environment variables (create this)
 ```
 
 ## Code Architecture
@@ -481,19 +238,9 @@ teams-devops-bot/
    - Main bot class with comprehensive command handlers
    - Advanced shift schedule management with 3-shift system
    - User interaction logic and team coordination
-   - Real-time AWS and Jira integration
+   - Mock data management for demonstrations
 
-3. **AWS Services** (`aws-services.js`)
-   - DynamoDB operations for persistent storage
-   - Lambda function invocation for alert monitoring
-   - EventBridge scheduling for automated operations
-
-4. **Jira API Integration** (`jira-api.js`)
-   - Real-time Jira ticket management
-   - SLA monitoring and breach detection
-   - Proactive escalation alerts
-
-5. **Shift Swap Dialog** (`bot.js`)
+3. **Shift Swap Dialog** (`bot.js`)
    - Multi-step conversation flow for complex operations
    - Handles shift swap requests and approvals
    - Uses Bot Framework dialogs for interactive experiences
@@ -504,7 +251,7 @@ teams-devops-bot/
 - **Error Handling**: Comprehensive error handling for all bot operations
 - **Command Parsing**: Robust command parsing with regex patterns for complex commands
 - **Dialog Flow**: Interactive multi-step conversations for complex operations
-- **Real-Time Integration**: AWS DynamoDB, Lambda, EventBridge, and Jira API
+- **Mock Data**: Built-in mock data for Jira tickets, incidents, calendar events, and reminders
 - **Extensible Architecture**: Easy to add new commands and integrate with external services
 
 ## Mock Data & Testing
@@ -574,54 +321,6 @@ help
 ```
 Then follow the interactive dialog to complete the swap request.
 
-## 🚀 **AWS Deployment**
-
-### **Prerequisites**
-- AWS account with appropriate permissions
-- AWS CLI installed and configured
-- IAM user with CloudFormation, Lambda, DynamoDB, and EventBridge permissions
-
-### **Deployment Steps**
-
-1. **Deploy Infrastructure**
-   ```bash
-   aws cloudformation deploy \
-     --template-file cloudformation-template.yaml \
-     --stack-name devops-bot-stack \
-     --capabilities CAPABILITY_NAMED_IAM
-   ```
-
-2. **Deploy Lambda Function**
-   ```bash
-   cd lambda
-   zip -r alert-monitor.zip alert-monitor.js
-   aws lambda update-function-code \
-     --function-name devops-bot-alert-monitor \
-     --zip-file fileb://alert-monitor.zip
-   ```
-
-3. **Verify Deployment**
-   ```bash
-   aws cloudformation describe-stacks --stack-name devops-bot-stack
-   ```
-
-### **Monitoring & Troubleshooting**
-
-1. **Check CloudWatch Logs**
-   ```bash
-   aws logs describe-log-groups --log-group-name-prefix "/aws/lambda/devops-bot"
-   ```
-
-2. **Verify DynamoDB Table**
-   ```bash
-   aws dynamodb scan --table-name devops-alerts
-   ```
-
-3. **Check EventBridge Rules**
-   ```bash
-   aws events list-rules --name-prefix "devops-bot"
-   ```
-
 ## Deployment
 
 ### Azure App Service
@@ -633,12 +332,6 @@ Then follow the interactive dialog to complete the swap request.
 1. Create Dockerfile
 2. Build and push to container registry
 3. Deploy to Kubernetes or other container platform
-
-### AWS Deployment
-1. Use CloudFormation template for infrastructure
-2. Deploy Lambda functions
-3. Configure environment variables
-4. Set up monitoring and alerting
 
 ## Troubleshooting
 
@@ -658,36 +351,12 @@ Then follow the interactive dialog to complete the swap request.
    - Check if dialog state is properly managed
    - Verify conversation state is being saved
 
-4. **AWS integration issues**
-   - Verify AWS credentials are correct
-   - Check if DynamoDB table exists
-   - Ensure Lambda function is deployed
-
-5. **Jira API issues**
-   - Verify Jira credentials are correct
-   - Check if your Jira instance allows API access
-   - Ensure your project key is correct
-
 ### Debug Mode
 
 Enable debug logging by setting environment variable:
 ```bash
 DEBUG=botbuilder:*
 npm start
-```
-
-### Port Conflicts
-
-If port 3978 is already in use:
-```bash
-# Find process using the port
-netstat -ano | findstr :3978
-
-# Kill the process
-taskkill /PID <process_id> /F
-
-# Or change port in .env file
-PORT=3979
 ```
 
 ## Contributing
@@ -718,18 +387,15 @@ For issues and questions:
 - [x] Incident management and escalation system
 - [x] Personal reminders and alert system
 - [x] Team collaboration and user management tools
-- [x] **Real-time AWS integration with DynamoDB, Lambda, and EventBridge**
-- [x] **Live Jira API integration with SLA monitoring**
-- [x] **Enhanced alert management with quick replies and escalation**
 
 ### 🔮 Upcoming Features
 - [ ] Microsoft Graph API integration for real calendar sync
+- [ ] Database storage (DynamoDB/PostgreSQL) for persistent data
 - [ ] Admin panel for managing shifts and team members
+- [ ] Real-time notifications and webhook support
 - [ ] Shift coverage analytics and reporting
 - [ ] Integration with PagerDuty, OpsGenie, and other alerting systems
 - [ ] Slack integration for cross-platform support
 - [ ] Custom workflow automation and approval processes
 - [ ] Mobile app for on-the-go management
 - [ ] Advanced reporting and analytics dashboard
-- [ ] Multi-tenant support for multiple teams
-- [ ] Advanced AI-powered incident routing and recommendations

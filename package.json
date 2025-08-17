@@ -1,0 +1,33 @@
+{
+  "name": "teams-devops-bot",
+  "version": "1.0.0",
+  "description": "Microsoft Teams chatbot for managing DevOps on-call shifts",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "microsoft-teams",
+    "bot-framework",
+    "devops",
+    "oncall",
+    "shift-management"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "botbuilder": "^4.20.1",
+    "botbuilder-dialogs": "^4.23.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

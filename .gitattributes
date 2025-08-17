@@ -1,0 +1,2 @@
+Bot[[:space:]]Framework[[:space:]]Emulator/resources/app.asar filter=lfs diff=lfs merge=lfs -text
+Bot[[:space:]]Framework[[:space:]]Emulator/Bot[[:space:]]Framework[[:space:]]Emulator.exe filter=lfs diff=lfs merge=lfs -text
